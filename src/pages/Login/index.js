@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Container, InputWrapper } from './elements'
 import {
   MainLayout,
@@ -7,8 +7,18 @@ import {
   InputText,
   NormalButton
 } from './../../components'
+import { isEmail } from './../../utils/validations'
 
 const Login = () => {
+  // constansts
+  const refInputEmail = useRef()
+  const refInputPassword = useRef()
+
+  const handleLogin = () => {
+    console.log(isEmail(refInputEmail.current.value))
+  }
+
+  // render
   return (
     <Container>
       <MainLayout>
@@ -16,15 +26,19 @@ const Login = () => {
 
         <InputWrapper>
           <Text text='メール:' />
-          <InputText />
+          <InputText ref={refInputEmail} />
         </InputWrapper>
 
         <InputWrapper>
           <Text text='パスワード:' />
-          <InputText />
+          <InputText ref={refInputPassword} type='password' />
         </InputWrapper>
 
-        <NormalButton title='ログイン' styles={{ alignSelf: 'center' }} />
+        <NormalButton
+          title='ログイン'
+          styles={{ alignSelf: 'center' }}
+          onClick={handleLogin}
+        />
       </MainLayout>
     </Container>
   )

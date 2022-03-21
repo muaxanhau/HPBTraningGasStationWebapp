@@ -8,11 +8,14 @@ import {
   NewGasStation,
   ListGasStation
 } from './pages'
+import GlobalLoading from './features/GlobalLoading'
 
 function App () {
   return (
     <>
       <GlobalStyles />
+
+      {/* <GlobalLoading /> */}
 
       <BrowserRouter>
         <Routes>
